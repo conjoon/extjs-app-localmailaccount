@@ -1,0 +1,149 @@
+{
+    "name": "@conjoon/extjs-app-localmailuser",
+    "sencha": {
+        "name": "extjs-app-localmailuser",
+        "coon-js": {
+            "package": {
+                "autoLoad": {
+                    "registerController": true
+                },
+                "config": "${package.resourcePath}/extjs-app-localmailuser.conf.json"
+            }
+        },
+        "namespace": "conjoon.localmailuser",
+        "type": "code",
+        "toolkit": "classic",
+        "creator": "Thorsten Suckow-Homberg <thorsten@suckow-homberg.de>",
+        "description": "Sencha Ext JS npm package for using local storage for maintaining email accounts.",
+        "version": "1.0.0",
+        "compatVersion": "1.0.0",
+        "format": "1",
+        "slicer": {
+            "js": [
+                {
+                    "path": "${package.dir}/sass/example/custom.js",
+                    "isWidgetManifest": true
+                }
+            ]
+        },
+        "output": {
+            "base": "${package.dir}/build",
+            "js": {
+                "version": "ES8"
+            }
+        },
+        "language": {
+            "js": {
+                "input": "ES8",
+                "output": "ES8"
+            }
+        },
+        "compressor": {
+            "type": "closure",
+            "polyfills": "none"
+        },
+        "local": true,
+        "theme": "extjs-theme-material",
+        "sass": {
+            "namespace": "",
+            "etc": [
+                "${package.dir}/sass/${theme.name}/etc/all.scss"
+            ],
+            "var": [
+                "${package.dir}/sass/${theme.name}/var/"
+            ],
+            "src": [
+                "${package.dir}/sass/${theme.name}/src/all.scss",
+                "${package.dir}/sass/${theme.name}/src/"
+            ]
+        },
+        "classpath": [
+            "${package.dir}/src",
+            "${package.dir}/${toolkit.name}/src"
+        ],
+        "overrides": [
+            "${package.dir}/overrides",
+            "${package.dir}/${toolkit.name}/overrides"
+        ],
+        "example": null,
+        "framework": "ext",
+        "requires": [
+            "extjs-app-webmail"
+        ]
+    },
+    "description": "Sencha Ext JS npm package for using local storage for maintaining email accounts.",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "bundle": "npx bundleme",
+        "build": "npx @sencha/cmd package build && npm run bundle",
+        "build:dev": "npx node-git-hooks",
+        "postversion": "git push && git push --tags",
+        "test": "npm run test:siesta",
+        "release": "standard-version",
+        "preversion": "npx delorean -r",
+        "release:patch": "npm run preversion && standard-version --release-as patch && npm run postversion",
+        "release:minor": "npm run preversion && standard-version --release-as minor && npm run postversion",
+        "release:major": "npm run preversion && standard-version --release-as major && npm run postversion",
+        "test:siesta": "npx ws --port 8069 --static.index tests.redirect.html --open"
+    },
+    "dependencies": {
+        "@conjoon/extjs-app-webmail": "^0.3",
+        "@conjoon/extjs-theme-material": "^0.3.1",
+        "@coon-js/extjs-lib-core": "^1.0.1",
+        "@l8js/l8": "^0.8.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^13.2.0",
+        "@commitlint/config-conventional": "^13.2.0",
+        "@coon-js/bundleme": "^0.3.1",
+        "@coon-js/delorean": "^0.3.3",
+        "@coon-js/extjs-link": "^0.1.10",
+        "@coon-js/extjs-package-loader": "^0.1.10",
+        "@coon-js/siesta-lib-helper": "^0.1.16",
+        "@sencha/cmd": "^7.6.0",
+        "@sencha/ext": "^7.6.0",
+        "@sencha/ext-classic": "^7.6.0",
+        "@sencha/ext-classic-runtime": "^7.5.0",
+        "@sencha/ext-classic-theme-material": "^7.6.0",
+        "@sencha/ext-core": "^7.6.0",
+        "@sencha/ext-modern": "^7.6.0",
+        "@sencha/ext-modern-runtime": "^7.5.0",
+        "@sencha/ext-ux": "^7.6.0",
+        "eslint": "^7.28.0",
+        "local-web-server": "^4.2.1",
+        "node-git-hooks": "^1.0.6",
+        "siesta-lite": "^5.5.2",
+        "standard-version": "^9.3.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/conjoon/extjs-app-localmailuser.git"
+    },
+    "keywords": [
+        "webmail",
+        "imap",
+        "user",
+        "extjs",
+        "sencha",
+        "coon.js",
+        "l8",
+        "l8js",
+        "local storage",
+        "l8.js",
+        "coonjs",
+        "coon-js",
+        "javascript",
+        "webmail"
+    ],
+    "author": "Thorsten Suckow-Homberg <thorsten@suckow-homberg.de>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/conjoon/extjs-app-localmailuser/issues"
+    },
+    "homepage": "https://github.com/conjoon/extjs-app-localmailuser#readme"
+}

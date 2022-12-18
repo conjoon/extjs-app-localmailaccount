@@ -1,0 +1,7 @@
+{
+    "title": "Local Email User",
+    "ioc": {
+        "bindings": {
+        }
+    }
+}

@@ -1,0 +1,7 @@
+/build
+/node_modules
+/.idea
+/tests/index.extjs-browser.html
+.extjs-build
+/.deloreanbuild/
+/package.json.delorean
