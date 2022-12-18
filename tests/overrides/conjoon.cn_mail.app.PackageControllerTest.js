@@ -23,9 +23,53 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export default [{
-    group: "overrides",
-    items: [
-        "overrides/conjoon.cn_mail.app.PackageControllerTest.js"
-    ]
-}];
+StartTest(t => {
+
+
+    /**
+     * Saves the original node nav before localmailuser injects additional buttons.
+     *
+     */
+    let NODE_NAV_LENGTH;
+
+    t.it("original preLaunchHook()", t => {
+
+
+        const
+            ctrl = Ext.create("conjoon.cn_mail.app.PackageController"),
+            nav = ctrl.postLaunchHook();
+
+        NODE_NAV_LENGTH = nav.navigation[0].nodeNav.length;
+
+        t.expect(NODE_NAV_LENGTH).toBeGreaterThan(0);
+
+    });
+
+
+    t.requireOk(
+        "conjoon.localmailuser.overrides.conjoon.cn_mail.app.PackageController",
+        () => {
+
+
+            t.it("preLaunchHook()", t => {
+
+
+                const
+                    ctrl = Ext.create("conjoon.cn_mail.app.PackageController"),
+                    nav = ctrl.postLaunchHook(),
+                    newLength = nav.navigation[0].nodeNav.length;
+
+                t.expect(newLength).toBe(NODE_NAV_LENGTH + 1);
+                t.expect(nav.navigation[0].nodeNav[NODE_NAV_LENGTH]).toEqual({
+                    xtype: "button",
+                    iconCls: "fas fa-at",
+                    itemId: "cn-localmailuser-addAccountBtn"
+                });
+
+            });
+
+        
+        });
+
+
+});

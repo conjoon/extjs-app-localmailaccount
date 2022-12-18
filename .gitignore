@@ -5,3 +5,4 @@
 .extjs-build
 /.deloreanbuild/
 /package.json.delorean
+*.log

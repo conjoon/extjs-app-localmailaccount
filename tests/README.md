@@ -6,7 +6,7 @@ This package uses [Siesta](http://bryntum.com) for Unit-/UI-testing.
 
 tl;dr
 ```
-npx create-siesta
+npx create-siesta@latest
 npm run test:siesta
 ```
 
@@ -17,12 +17,10 @@ Run
 npx create-siesta
 ```
 will install Siesta and the Sencha Ext JS Sources required for running the tests.
-in the NPM package. The tool will guide you through the process of symlinking to an existing ExtJS SDK installation
-Warning:
-Make a backup of your `./test` folder in case you accidentally let `create-siesta` override it.
 
-Once this is done, boilerplate-html
-files will be copied to the project (to: `./tests.redirect.html` and `./tests/index.extjs-browser.html`).
+Please make a backup of your `./test` folder in case you accidentally let `create-siesta` override it.
+
+Boilerplate-html files will be copied to the project (targets: `./tests.redirect.html` and `./tests/index.extjs-browser.html`).
 
 After this was done, run
 ```
