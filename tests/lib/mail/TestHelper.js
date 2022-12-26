@@ -23,53 +23,77 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-StartTest(t => {
+export default class TestHelper {
 
 
     /**
-     * Saves the original node nav before localmailuser injects additional buttons.
+     * Returns an instance of TestHelper.
      *
+     * @param siestaTest
+     * @param owningWindow
+     * @return {TestHelper}
      */
-    let NODE_NAV_LENGTH;
-
-    t.it("original preLaunchHook()", t => {
-
-
-        const
-            ctrl = Ext.create("conjoon.cn_mail.app.PackageController"),
-            nav = ctrl.postLaunchHook();
-
-        NODE_NAV_LENGTH = nav.navigation[0].nodeNav.length;
-
-        t.expect(NODE_NAV_LENGTH).toBeGreaterThan(0);
-
-    });
+    static get (siestaTest, owningWindow) {
+        let stat = new TestHelper();
+        stat.siestaTest = siestaTest;
+        stat.owningWindow = owningWindow;
+        return stat;
+    }
 
 
-    t.requireOk(
-        "conjoon.localmailuser.overrides.conjoon.cn_mail.app.PackageController",
-        () => {
+    /**
+     * Calls the submitted callable.
+     *
+     * @param cb
+     * @return {TestHelper}
+     */
+    andRun (cb) {
+        cb(this.siestaTest);
+
+        return this;
+    }
 
 
-            t.it("preLaunchHook()", t => {
+    /**
+     *
+     * @returns {Promise<TestHelper>}
+     */
+    async registerIoC () {
 
+        const t = this.siestaTest;
 
-                const
-                    ctrl = Ext.create("conjoon.cn_mail.app.PackageController"),
-                    nav = ctrl.postLaunchHook(),
-                    newLength = nav.navigation[0].nodeNav.length;
+        await new Promise((resolve, reject) => {
 
-                t.expect(newLength).toBe(NODE_NAV_LENGTH + 1);
-                t.expect(nav.navigation[0].nodeNav[NODE_NAV_LENGTH]).toEqual({
-                    xtype: "button",
-                    iconCls: "fas fa-at",
-                    itemId: "cn-localmailuser-addAccountBtn"
-                });
-
+            t.requireOk("coon.core.ioc.Container", () => {
+                coon.core.ioc.Container.bind({});
+                resolve(" -> IoC");
             });
 
-        
         });
 
+        return this;
+    }
 
-});
+
+    /**
+     * Loads the specified files.
+     *
+     * @param files
+     * @return {Promise<TestHelper>}
+     */
+    async load (...files) {
+
+        const t = this.siestaTest;
+
+        await new Promise((resolve, reject) => {
+            t.requireOk(files, () => {
+                resolve(" -> load");
+            });
+
+        });
+
+        return this;
+    }
+
+
+}
