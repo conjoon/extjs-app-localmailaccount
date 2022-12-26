@@ -24,8 +24,6 @@
  */
 
 export default [{
-    group: "overrides",
-    items: [
-        "overrides/conjoon.cn_mail.app.PackageControllerTest.js"
-    ]
+    group: "-",
+    items: []
 }];
