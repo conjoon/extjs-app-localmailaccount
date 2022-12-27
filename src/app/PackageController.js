@@ -24,65 +24,39 @@
  */
 
 /**
- * Override to make sure this PackageController is recognized by an application if requested.
- * Additionally, this PackageController implements {coon.user.app.PackageController#userWasNotAuthorized}
- * to make sure any existing {coon.user.view.authentication.AuthForm#showAuthorizationFailed} is called.
+ * PackageController to install simlet that intercepts requests to MailAccounts and redirects to
+ * LocalStorage instead.
  */
 Ext.define("conjoon.localmailuser.app.PackageController", {
 
-    extend: "coon.user.app.PackageController",
+    extend: "coon.core.app.PackageController",
 
     requires: [
         // @define
-        "l8"
+        "l8",
+        "conjoon.localmailuser.data.MailAccountToLocalStorageSim",
+        "Ext.ux.ajax.SimManager"
     ],
 
-    /**
-     * UserImageService as returned by the ServiceLocator for showing the
-     * UserImage in the toolbar
-     * @type {coon.core.service.UserImageService} userImageService
-     * @private
-     */
 
-    control: {
+    init (app) {
+        const
+            me = this,
+            config = app.getPackageConfig(me);
 
-
+        Ext.ux.ajax.SimManager.register(
+            Ext.create("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
+                url: new RegExp(config.interceptUri, "im"),
+                delay: 1
+            })
+        );
     },
 
 
-    /**
-     * @inheritdoc
-     */
-    init: function (app) {
-
-
-    },
-
-
-    preLaunchHook: function (app) {
-
+    preLaunchHook (app) {
         const me = this;
-
-
-
         let title = app.getPackageConfig(me, "title");
         title && Ext.fireEvent("conjoon.application.TitleAvailable", me, title);
-
-
         return true;
-    },
-
-
-    /**
-     * @inheritdoc
-     */
-    postLaunchHook: function () {
-
-
-
-
-
     }
-
-
 });

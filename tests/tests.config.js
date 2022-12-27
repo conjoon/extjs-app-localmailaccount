@@ -70,7 +70,7 @@ export default {
          */
         "conjoon.cn_mail.view": "../../node_modules/@conjoon/extjs-app-webmail/classic/src/view",
 
-        "coon.comp.window.Toast": "../../node_modules/@coon-js/extjs-lib-comp/classic/src/window/Toast.js",
+        "coon.comp.window.Toast": "../../node_modules/@coon-js/extjs-lib-comp/classic/src/window/Toast.js"
 
 
     },

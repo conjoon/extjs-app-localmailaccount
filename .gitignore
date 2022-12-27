@@ -6,3 +6,4 @@
 /.deloreanbuild/
 /package.json.delorean
 *.log
+/*.log
