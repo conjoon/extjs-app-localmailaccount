@@ -24,6 +24,24 @@
  */
 
 export default [{
-    group: "-",
-    items: []
+    group: "universal",
+    items: [{
+        group: "src",
+        items: [{
+            group: "app",
+            items: [
+                "src/app/PackageControllerTest.js"
+            ]
+        }]
+    }]
+
+}, {
+    group: "classic",
+    items: [{
+        group: "view",
+        items: [
+            "classic/src/view/MailAccountHandlerTest.js"
+        ]
+    }]
+
 }];

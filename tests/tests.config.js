@@ -45,6 +45,8 @@ export default {
         "conjoon.cn_mail": "../../node_modules/@conjoon/extjs-app-webmail/src",
         "conjoon.cn_mail.view.mail.account.MailAccountViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/account/MailAccountViewModel.js",
         "conjoon.cn_mail.view.mail.account.MailAccountViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/account/MailAccountViewController.js",
+        "conjoon.cn_mail.view.mail.account.MailAccountWizardController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/account/MailAccountWizardController.js",
+
         "conjoon.cn_mail.view.mail.inbox.InboxViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/inbox/InboxViewModel.js",
         "conjoon.cn_mail.view.mail.inbox.InboxViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/inbox/InboxViewController.js",
         "conjoon.cn_mail.view.mail.message.reader.MessageViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/reader/MessageViewModel.js",
@@ -69,6 +71,8 @@ export default {
          * Classic
          */
         "conjoon.cn_mail.view": "../../node_modules/@conjoon/extjs-app-webmail/classic/src/view",
+
+        "conjoon.localmailuser.view": "../classic/src/view",
 
         "coon.comp.window.Toast": "../../node_modules/@coon-js/extjs-lib-comp/classic/src/window/Toast.js"
 
