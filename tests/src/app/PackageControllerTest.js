@@ -41,7 +41,7 @@ StartTest(t => {
 
         const
             app = {
-                getPackageConfig: function() {}
+                getPackageConfig: function () {}
             },
             confSpy = t.spyOn(app, "getPackageConfig").and.callFake(() => ({interceptUri})),
             simSpy = t.spyOn(Ext.ux.ajax.SimManager, "register").and.callFake(() => {});
@@ -54,7 +54,6 @@ StartTest(t => {
 
         [confSpy, simSpy].map(spy => spy.remove());
     });
-
 
 
     t.it("preLaunchHook()", t => {
