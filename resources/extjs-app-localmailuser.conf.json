@@ -1,7 +1,4 @@
 {
-    "title": "Local Email User",
-    "ioc": {
-        "bindings": {
-        }
-    }
+    "title": "Local Email Accounts",
+    "interceptUri": "\\/MailAccounts\\/?[^\\/]*$"
 }

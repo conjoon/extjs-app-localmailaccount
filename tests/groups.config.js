@@ -35,13 +35,4 @@ export default [{
         }]
     }]
 
-}, {
-    group: "classic",
-    items: [{
-        group: "view",
-        items: [
-            "classic/src/view/MailAccountHandlerTest.js"
-        ]
-    }]
-
 }];

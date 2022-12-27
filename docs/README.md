@@ -22,16 +22,20 @@ in a file named `extjs-app-localmailuser.conf.json`.
 
 ## What goes into a `extjs-app-localmailuser` configuration?
 
-The package utilizes the Local Storage API for saving email account information locally. 
+The package utilizes the Local Storage API for saving email account information locally. The following configuration
+is required for this package:
 
-The configuration file for this package has one main entry: `title`:
 
 ```json
 {
-  "title": "Local Email User"
+  "title": "Local Email User",
+  "interceptUri": "\\/MailAccounts\\/?[^\\/]*$"
 }
 ```
 
 - `title` - The title of the package. This is used for assembling navigation entries, or changing the
 `document.title` of the browser instance the application runs in. This package notifies interested 
 observers with this title whenever view of the package gets activated and gains the focus.
+
+- `interceptUri` - The URI the package should intercept when reading/writing MailAccounts so commands are redirected to
+this package's LocalStorage-API

@@ -42,39 +42,7 @@ export default {
         /**
          * Universal
          */
-        "conjoon.cn_mail": "../../node_modules/@conjoon/extjs-app-webmail/src",
-        "conjoon.cn_mail.view.mail.account.MailAccountViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/account/MailAccountViewModel.js",
-        "conjoon.cn_mail.view.mail.account.MailAccountViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/account/MailAccountViewController.js",
-        "conjoon.cn_mail.view.mail.account.MailAccountWizardController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/account/MailAccountWizardController.js",
-
-        "conjoon.cn_mail.view.mail.inbox.InboxViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/inbox/InboxViewModel.js",
-        "conjoon.cn_mail.view.mail.inbox.InboxViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/inbox/InboxViewController.js",
-        "conjoon.cn_mail.view.mail.message.reader.MessageViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/reader/MessageViewModel.js",
-        "conjoon.cn_mail.view.mail.message.reader.MessageViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/reader/MessageViewController.js",
-        "conjoon.cn_mail.view.mail.message.editor.MessageEditorViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/editor/MessageEditorViewModel.js",
-        "conjoon.cn_mail.view.mail.message.AbstractAttachmentListController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/AbstractAttachmentListController.js",
-        "conjoon.cn_mail.view.mail.message.reader.AttachmentListController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/reader/AttachmentListController.js",
-        "conjoon.cn_mail.view.mail.message.editor.AttachmentListController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/editor/AttachmentListController.js",
-        "conjoon.cn_mail.view.mail.MailDesktopViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/MailDesktopViewController.js",
-        "conjoon.cn_mail.view.mail.MailDesktopViewModel": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/MailDesktopViewModel.js",
-        "conjoon.cn_mail.view.mail.message.editor.MessageEditorViewController": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/editor/MessageEditorViewController.js",
-        "conjoon.cn_mail.view.mail.message.editor.MessageEditorDragDropListener": "../../node_modules/@conjoon/extjs-app-webmail/src/view/mail/message/editor/MessageEditorDragDropListener.js",
-
-        "coon.comp.window": "../../node_modules/@coon-js/extjs-lib-comp/src/window",
-        "coon.comp.toolbar": "../../node_modules/@coon-js/extjs-lib-comp/src/toolbar",
-        "coon.comp": "../../node_modules/@coon-js/extjs-lib-comp/classic/src",
-
-        "coon.core": "../../node_modules/@coon-js/extjs-lib-core/src/",
-
-
-        /**
-         * Classic
-         */
-        "conjoon.cn_mail.view": "../../node_modules/@conjoon/extjs-app-webmail/classic/src/view",
-
-        "conjoon.localmailuser.view": "../classic/src/view",
-
-        "coon.comp.window.Toast": "../../node_modules/@coon-js/extjs-lib-comp/classic/src/window/Toast.js"
+        "coon.core": "../../node_modules/@coon-js/extjs-lib-core/src/"
 
 
     },
