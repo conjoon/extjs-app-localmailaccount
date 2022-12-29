@@ -35,7 +35,8 @@ export default [{
         }, {
             group: "data",
             items: [
-                "src/data/MailAccountRepositoryTest.js"
+                "src/data/MailAccountRepositoryTest.js",
+                "src/data/MailAccountToLocalStorageSimTest.js"
             ]
         }]
     }]
