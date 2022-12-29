@@ -32,6 +32,11 @@ export default [{
             items: [
                 "src/app/PackageControllerTest.js"
             ]
+        }, {
+            group: "data",
+            items: [
+                "src/data/MailAccountRepositoryTest.js"
+            ]
         }]
     }]
 
