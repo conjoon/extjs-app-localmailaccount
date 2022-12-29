@@ -24,6 +24,21 @@
  */
 
 export default [{
-    group: "-",
-    items: []
+    group: "universal",
+    items: [{
+        group: "src",
+        items: [{
+            group: "app",
+            items: [
+                "src/app/PackageControllerTest.js"
+            ]
+        }, {
+            group: "data",
+            items: [
+                "src/data/MailAccountRepositoryTest.js",
+                "src/data/MailAccountToLocalStorageSimTest.js"
+            ]
+        }]
+    }]
+
 }];

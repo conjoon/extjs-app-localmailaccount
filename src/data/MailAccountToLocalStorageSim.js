@@ -1,7 +1,7 @@
 /**
  * conjoon
- * extjs-app-localmailuser
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailuser
+ * extjs-app-localmailaccount
+ * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -23,40 +23,58 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * PackageController to install simlet that intercepts requests to MailAccounts and redirects to
- * LocalStorage instead.
- */
-Ext.define("conjoon.localmailuser.app.PackageController", {
 
-    extend: "coon.core.app.PackageController",
+Ext.define("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
+
+    extend: "Ext.ux.ajax.JsonSimlet",
 
     requires: [
-        // @define
-        "l8",
-        "conjoon.localmailuser.data.MailAccountToLocalStorageSim",
-        "Ext.ux.ajax.SimManager"
+        "conjoon.localmailuser.data.MailAccountRepository"
     ],
 
-
-    init (app) {
-        const
-            me = this,
-            config = app.getPackageConfig(me);
-
-        Ext.ux.ajax.SimManager.register(
-            Ext.create("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
-                url: new RegExp(config.interceptUri, "im"),
-                delay: 1
-            })
-        );
+    statics: {
+        required: {
+            mailAccountRepository: "conjoon.localmailuser.data.MailAccountRepository"
+        }
     },
 
 
-    preLaunchHook (app) {
-        const me = this;
-        let title = app.getPackageConfig(me, "title");
-        title && Ext.fireEvent("conjoon.application.TitleAvailable", me, title);
-        return true;
+    doGet: function (ctx) {
+        const
+            me = this,
+            accounts = me.mailAccountRepository.queryAll();
+
+        let ret = {};
+
+        ret.status = 200;
+        ret.responseText = JSON.stringify({
+            data: accounts
+        });
+
+        Ext.Array.forEach(me.responseProps, function (prop) {
+            if (prop in me) {
+                ret[prop] = me[prop];
+            }
+        });
+
+        return ret;
+    },
+
+
+    doPost: function (ctx) {
+
+        const
+            me = this,
+            data = JSON.parse(ctx.xhr.body),
+            created = me.mailAccountRepository.insert(data);
+
+        let ret = {};
+
+        ret.status = 200;
+        ret.responseText = JSON.stringify({
+            data: {id: created.id}
+        });
+        return ret;
     }
+
 });
