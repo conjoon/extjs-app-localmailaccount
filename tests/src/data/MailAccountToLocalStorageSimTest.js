@@ -35,7 +35,13 @@ StartTest(t => {
 
     const FAKE_REPOSITORY = {
         queryAll () {return [{account: 1}, {account: 2}];},
-        insert () {return {id: "newId"};}
+        insert () {return {id: "newId"};},
+        update (key, data) {
+            if (key === "1") {
+                return undefined;
+            }
+            return {id: "updatedId", data: "all"};
+        }
     };
 
     t.it("constructor / config", t => {
@@ -86,4 +92,50 @@ StartTest(t => {
         [insertSpy].map(spy => spy.remove());
     });
 
+
+    t.it("doPatch() - 200", t => {
+        sim = create();
+
+        sim.mailAccountRepository = FAKE_REPOSITORY;
+
+        const updateSpy = t.spyOn(FAKE_REPOSITORY, "update").and.callThrough();
+
+        const ctx = {
+            xhr: {
+                url: "https://localhost/MailAccounts/cn_localmailaccount-1?dc=8796689",
+                body: JSON.stringify({dataToUpdate: "values"})
+            }
+        };
+
+        let resp = sim.doPatch(ctx);
+        t.expect(updateSpy.calls.mostRecent().args).toEqual([
+            "cn_localmailaccount-1",
+            JSON.parse(ctx.xhr.body)
+        ]);
+
+        t.expect(resp.status).toBe(200);
+        t.expect(resp.responseText).toBe(JSON.stringify({
+            data: updateSpy.calls.mostRecent().returnValue
+        }));
+
+        [updateSpy].map(spy => spy.remove());
+    });
+
+
+    t.it("doPatch() - 400", t => {
+        sim = create();
+
+        sim.mailAccountRepository = FAKE_REPOSITORY;
+
+        const ctx = {
+            xhr: {
+                url: "https://localhost/MailAccounts/1?dc=8796689",
+                body: "{}"
+            }
+        };
+
+        let resp = sim.doPatch(ctx);
+
+        t.expect(resp.status).toBe(400);
+    });
 });

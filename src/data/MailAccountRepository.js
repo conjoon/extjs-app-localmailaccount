@@ -53,9 +53,39 @@ Ext.define("conjoon.localmailuser.data.MailAccountRepository", {
 
         data.id = id;
 
-        me.getStorage().setItem(id, JSON.stringify(data));
+        me.getStorage().setItem(id, me.encodeItem(data));
 
         return Object.assign({}, data);
+    },
+
+
+    /**
+     * Updates MailAccount-data for the given id.
+     *
+     * @param {String} id
+     * @param {Object} data
+     *
+     * @returns {Object|undefined} The MailAccount with the updated data, or undefined
+     * if the data with the id was not found.
+     *
+     */
+    update (id, data) {
+
+        const
+            me = this,
+            item = me.query(id);
+
+        if (!item) {
+            return undefined;
+        }
+
+        let parsedData = me.decodeItem(data);
+        let updated = Object.assign(item, parsedData);
+
+        me.getStorage().setItem(id, me.encodeItem(updated));
+
+
+        return Object.assign({}, {id, ...updated});
     },
 
 
@@ -102,22 +132,54 @@ Ext.define("conjoon.localmailuser.data.MailAccountRepository", {
 
 
     /**
+     * Returns the item with the specified id.
+     *
+     * @param {String} id
+     *
+     * @returns {Object|undefined}
+     *
+     * @throws exception if id did not match this repository's idPrefix
+     */
+    query (id) {
+
+        const
+            me = this,
+            idPrefix = me.idPrefix,
+            storage = me.getStorage();
+
+        if (id.indexOf(idPrefix) !== 0) {
+            throw new Error(`Unexpected id: ${id}, expected id to contain "${idPrefix}"`);
+        }
+
+        const item = storage.getItem(id);
+        if (item) {
+            return me.decodeItem(item);
+        }
+
+        return undefined;
+    },
+
+
+    /**
      * Decodes an item from the underlying data storage and returns it.
+     * Will only decode necessary parts if the submitted data is partially
+     * encoded.
      *
-     *
-     * @param {String} item
+     * @param {Object|String} item
      *
      * @returns {Object}
      */
     decodeItem (item) {
 
-        try {
-            item = JSON.parse(item);
-        } catch (e) {
-            throw new Error(
-                "Could not decode MailAccount saved in LocalStorage. " +
-                "Please clear the LocalStorage if this problem persists."
-            );
+        if (l8.isString(item)) {
+            try {
+                item = JSON.parse(item);
+            } catch (e) {
+                throw new Error(
+                    "Could not decode MailAccount saved in LocalStorage. " +
+                    "Please clear the LocalStorage if this problem persists."
+                );
+            }
         }
 
         ["replyTo", "from"].map(decodable => {
@@ -132,6 +194,34 @@ Ext.define("conjoon.localmailuser.data.MailAccountRepository", {
         });
 
         return item;
+    },
+
+
+    /**
+     * Prepares item so it can be stored locally.
+     *
+     * @param {Object} item
+     *
+     * @returns {String}
+     */
+    encodeItem (item) {
+
+        const data = Object.fromEntries(
+
+            Object.entries(item).map(([key, value]) => {
+
+                if (["from", "replyTo"].includes(key)) {
+                    if (l8.isObject(value)) {
+                        value = JSON.stringify(value);
+                    }
+                }
+
+                return [key, value];
+            })
+
+        );
+
+        return JSON.stringify(data);
     },
 
 
