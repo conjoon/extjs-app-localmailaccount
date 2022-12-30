@@ -77,6 +77,48 @@ StartTest(t => {
     });
 
 
+    t.it("update()", t => {
+
+        rep = create();
+
+        const FAKE_STORAGE = {
+            setItem: function () {},
+            getItem: function (key) {
+                if (key === generateKey(rep, 2)) {
+                    return JSON.stringify({
+                        name: "mailAccountName",
+                        from: JSON.stringify({name: "name", address: "address"}),
+                        replyTo: JSON.stringify({name: "name", address: "address"})
+                    });
+                }
+            }
+        };
+
+        const setItemSpy = t.spyOn(FAKE_STORAGE, "setItem").and.callFake(() => {});
+        const encodeSpy = t.spyOn(rep, "encodeItem").and.callThrough();
+
+        const data = {name: "new name", from: JSON.stringify({name: "prevName", address: "prevAddress"})};
+
+        rep.getStorage = () => FAKE_STORAGE;
+
+        t.expect(rep.update(generateKey(rep, 1), {})).toBeUndefined();
+
+        t.expect(rep.update(generateKey(rep, 2), data)).toEqual({
+            id: generateKey(rep, 2),
+            name: "new name",
+            from: {name: "prevName", address: "prevAddress"},
+            replyTo: {name: "name", address: "address"}
+        });
+
+        t.expect(setItemSpy.calls.mostRecent().args).toEqual([
+            generateKey(rep, 2),
+            encodeSpy.calls.mostRecent().returnValue
+        ]);
+
+        [encodeSpy, setItemSpy].map(spy => spy.remove());
+    });
+
+
     t.it("nextId()", t => {
         rep = create();
 
@@ -95,6 +137,33 @@ StartTest(t => {
         });
 
         [queryAllSpy].map(spy => spy.remove());
+    });
+
+
+    t.it("query()", t => {
+        rep = create();
+
+        try {
+            rep.query("foo");
+            t.fail();
+        } catch (e) {
+            t.expect(e.message).toContain(`expected id to contain "${rep.idPrefix}"`);
+        }
+
+        const FAKE_STORAGE = {
+            getItem: key => key === generateKey(rep, 1) ? JSON.stringify({key}) : null
+        };
+
+        const decodeSpy = t.spyOn(rep, "decodeItem").and.callThrough();
+
+        rep.getStorage = () => FAKE_STORAGE;
+
+        t.expect(rep.query(generateKey(rep, 2))).toBeUndefined();
+        t.expect(rep.query(generateKey(rep, 1))).toEqual({key: generateKey(rep, 1)});
+        t.expect(decodeSpy.calls.count()).toBe(1);
+
+        [decodeSpy].map(spy => spy.remove());
+
     });
 
 

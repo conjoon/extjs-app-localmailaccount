@@ -39,12 +39,11 @@ Ext.define("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
     },
 
 
-    doGet: function (ctx) {
+    doGet (ctx) {
         const
             me = this,
-            accounts = me.mailAccountRepository.queryAll();
-
-        let ret = {};
+            accounts = me.mailAccountRepository.queryAll(),
+            ret = {};
 
         ret.status = 200;
         ret.responseText = JSON.stringify({
@@ -61,19 +60,36 @@ Ext.define("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
     },
 
 
-    doPost: function (ctx) {
+    doPost (ctx) {
 
         const
             me = this,
             data = JSON.parse(ctx.xhr.body),
-            created = me.mailAccountRepository.insert(data);
-
-        let ret = {};
+            created = me.mailAccountRepository.insert(data),
+            ret = {};
 
         ret.status = 200;
         ret.responseText = JSON.stringify({
             data: {id: created.id}
         });
+        return ret;
+    },
+
+
+    doPatch (ctx) {
+
+        const
+            me = this,
+            data = JSON.parse(ctx.xhr.body),
+            id = ctx.xhr.url.split("/").pop().split("?").shift(),
+            updated = me.mailAccountRepository.update(id, data),
+            ret = {};
+
+        ret.status = updated ? 200 : 400;
+        if (updated) {
+            ret.responseText = JSON.stringify({data: updated});
+        }
+
         return ret;
     }
 
