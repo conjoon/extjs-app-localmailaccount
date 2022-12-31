@@ -1,4 +1,17 @@
 {
     "title": "Local Email Accounts",
-    "interceptUri": "\\/MailAccounts\\/?[^\\/]*$"
+    "interceptUri": "\\/MailAccounts\\/?[^\\/]*$",
+    "ioc": {
+        "bindings": {
+            "conjoon.dev.cn_mailsim": {
+                "conjoon.dev.cn_mailsim.data.SimletAdapter": "conjoon.localmailuser.dev.BasicAuthSimletAdapter"
+            },
+            "conjoon.cn_mail": {
+                "coon.core.data.request.Configurator": {
+                    "xclass": "conjoon.localmailuser.data.request.Configurator",
+                    "singleton": true
+                }
+            }
+        }
+    }
 }
