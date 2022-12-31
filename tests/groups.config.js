@@ -35,6 +35,12 @@ export default [{
         }, {
             group: "data",
             items: [
+                {
+                    group: "request",
+                    items: [
+                        "src/data/request/ConfiguratorTest.js"
+                    ]
+                },
                 "src/data/MailAccountRepositoryTest.js",
                 "src/data/MailAccountToLocalStorageSimTest.js"
             ]

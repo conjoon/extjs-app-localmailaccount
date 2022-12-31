@@ -42,8 +42,9 @@ export default {
         /**
          * Universal
          */
-        "coon.core": "../../node_modules/@coon-js/extjs-lib-core/src/"
+        "coon.core": "../../node_modules/@coon-js/extjs-lib-core/src/",
 
+        "conjoon.cn_mail": "../../node_modules/@conjoon/extjs-app-webmail/src/"
 
     },
 
