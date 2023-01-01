@@ -65,8 +65,10 @@ Ext.define("conjoon.localmailuser.data.request.Configurator", {
 
         const
             isInboxRequest = me.isInboxRequest(request),
-            authStr = isInboxRequest ? mailAccount.getInboxAuth() : mailAccount.getOutboxAuth(),
-            serverInfo = isInboxRequest ? mailAccount.getInboxInfo() : mailAccount.getOutboxInfo(),
+            authStr = mailAccount.getInboxAuth(),
+            serverInfo = isInboxRequest
+                         ? mailAccount.getInboxInfo()
+                         : Object.assign(mailAccount.getOutboxInfo(true), mailAccount.getInboxInfo()),
             headers = (isDataRequest ? request.getHeaders() : request.headers) || {},
             newHeaders = Object.assign(headers, {
                 Authorization: "Basic " + me.encode(authStr.join(":")),
