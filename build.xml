@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="extjs-app-localmailuser" default=".help">
+<project name="extjs-app-localmailaccount" default=".help">
 
     <script language="javascript">
         <![CDATA[

@@ -1,7 +1,7 @@
 /**
  * conjoon
- * extjs-app-localmailuser
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailuser
+ * extjs-app-localmailaccount
+ * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -28,14 +28,14 @@ StartTest(t => {
     let ctrl;
 
     t.it("constructor / config", t => {
-        ctrl = Ext.create("conjoon.localmailuser.app.PackageController");
+        ctrl = Ext.create("conjoon.localmailaccount.app.PackageController");
         t.isInstanceOf(ctrl, "coon.core.app.PackageController");
     });
 
 
     t.it("init()", t => {
 
-        ctrl = Ext.create("conjoon.localmailuser.app.PackageController");
+        ctrl = Ext.create("conjoon.localmailaccount.app.PackageController");
 
         const interceptUri = "intercepturi";
 
@@ -48,7 +48,7 @@ StartTest(t => {
 
         ctrl.init(app);
         let arg = simSpy.calls.mostRecent().args[0];
-        t.isInstanceOf(arg, "conjoon.localmailuser.data.MailAccountToLocalStorageSim");
+        t.isInstanceOf(arg, "conjoon.localmailaccount.data.MailAccountToLocalStorageSim");
         t.expect(arg.url.toString()).toBe(`/${interceptUri}/im`);
         t.expect(arg.delay).toBe(1);
 
@@ -58,7 +58,7 @@ StartTest(t => {
 
     t.it("preLaunchHook()", t => {
 
-        ctrl = Ext.create("conjoon.localmailuser.app.PackageController");
+        ctrl = Ext.create("conjoon.localmailaccount.app.PackageController");
 
         const title = "TITLE";
 

@@ -1,7 +1,7 @@
 /**
  * conjoon
- * extjs-app-localmailuser
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailuser
+ * extjs-app-localmailaccount
+ * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

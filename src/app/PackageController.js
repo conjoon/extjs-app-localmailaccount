@@ -1,7 +1,7 @@
 /**
  * conjoon
- * extjs-app-localmailuser
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailuser
+ * extjs-app-localmailaccount
+ * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -27,14 +27,14 @@
  * PackageController to install simlet that intercepts requests to MailAccounts and redirects to
  * LocalStorage instead.
  */
-Ext.define("conjoon.localmailuser.app.PackageController", {
+Ext.define("conjoon.localmailaccount.app.PackageController", {
 
     extend: "coon.core.app.PackageController",
 
     requires: [
         // @define
         "l8",
-        "conjoon.localmailuser.data.MailAccountToLocalStorageSim",
+        "conjoon.localmailaccount.data.MailAccountToLocalStorageSim",
         "Ext.ux.ajax.SimManager"
     ],
 
@@ -45,7 +45,7 @@ Ext.define("conjoon.localmailuser.app.PackageController", {
             config = app.getPackageConfig(me);
 
         Ext.ux.ajax.SimManager.register(
-            Ext.create("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
+            Ext.create("conjoon.localmailaccount.data.MailAccountToLocalStorageSim", {
                 url: new RegExp(config.interceptUri, "im"),
                 delay: 1
             })

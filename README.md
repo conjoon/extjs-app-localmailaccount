@@ -1,4 +1,4 @@
-# @conjoon/extjs-app-localmailuser ![MIT](https://img.shields.io/npm/l/@conjoon/extjs-app-localmailuser) [![npm version](https://badge.fury.io/js/@conjoon%2Fextjs-app-localmailuser.svg)](https://badge.fury.io/js/@conjoon%2Fextjs-app-localmailuser)
+# @conjoon/extjs-app-localmailaccount ![MIT](https://img.shields.io/npm/l/@conjoon/extjs-app-localmailaccount) [![npm version](https://badge.fury.io/js/@conjoon%2Fextjs-app-localmailaccount.svg)](https://badge.fury.io/js/@conjoon%2Fextjs-app-localmailaccount)
 
 Local Storage support for maintaining email accounts.
 
@@ -10,7 +10,7 @@ It is best suited for users running conjoon as a local email who wish to maintai
 
 ## Installation
 ```bash
-$ npm i @conjoon/extjs-app-localmailuser
+$ npm i @conjoon/extjs-app-localmailaccount
 ```
 
 If you want to develop with this package, run the `build:dev`-script:
@@ -47,13 +47,13 @@ either the `development` and/or `prodution` section:
 {
     "development": {
         "uses": [
-            "extjs-app-localmailuser",
+            "extjs-app-localmailaccount",
             "extjs-app-webmail"
         ]
     },
     "production": {
         "uses": [
-            "extjs-app-localmailuser",
+            "extjs-app-localmailaccount",
             "extjs-app-webmail"
         ]
     }

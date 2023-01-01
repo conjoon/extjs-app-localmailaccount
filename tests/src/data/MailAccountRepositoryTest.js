@@ -27,8 +27,8 @@ StartTest(t => {
 
     let rep;
 
-    const CLASS_NAME = "conjoon.localmailuser.data.MailAccountRepository";
-    const PARENT_CLASS = "conjoon.localmailuser.data.MailAccountRepository";
+    const CLASS_NAME = "conjoon.localmailaccount.data.MailAccountRepository";
+    const PARENT_CLASS = "conjoon.localmailaccount.data.MailAccountRepository";
 
 
     const generateKey = (rep, ordinal) => {

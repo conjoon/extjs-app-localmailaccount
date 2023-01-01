@@ -28,7 +28,7 @@ StartTest(t => {
     let conf;
 
     const PARENT_CLASS = "coon.core.data.request.Configurator";
-    const CLASS_NAME = "conjoon.localmailuser.data.request.Configurator";
+    const CLASS_NAME = "conjoon.localmailaccount.data.request.Configurator";
 
     const create = () => Ext.create(CLASS_NAME);
 
@@ -249,8 +249,10 @@ StartTest(t => {
         const accountSpy = t.spyOn(conf, "getAccountForUrl").and.callFake(() => mailAccount);
 
         const outboxResultHeaders = {
-            Authorization: "Basic " + conf.encode(mailAccount.getOutboxAuth().join(":")),
-            "X-CNMAIL-DATA": conf.encode(mailAccount.getOutboxInfo())
+            Authorization: "Basic " + conf.encode(mailAccount.getInboxAuth().join(":")),
+            "X-CNMAIL-DATA": conf.encode(
+                Object.assign(mailAccount.getOutboxInfo(true), mailAccount.getInboxInfo())
+            )
         };
 
         let request = conf.configure(makeRequest(outboxRequest));
