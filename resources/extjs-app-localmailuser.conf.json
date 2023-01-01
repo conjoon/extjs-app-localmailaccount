@@ -4,11 +4,11 @@
     "ioc": {
         "bindings": {
             "conjoon.dev.cn_mailsim": {
-                "conjoon.dev.cn_mailsim.data.SimletAdapter": "conjoon.localmailuser.dev.BasicAuthSimletAdapter"
+                "conjoon.dev.cn_mailsim.data.SimletAdapter": "conjoon.localmailaccount.dev.BasicAuthSimletAdapter"
             },
             "conjoon.cn_mail": {
                 "coon.core.data.request.Configurator": {
-                    "xclass": "conjoon.localmailuser.data.request.Configurator",
+                    "xclass": "conjoon.localmailaccount.data.request.Configurator",
                     "singleton": true
                 }
             }

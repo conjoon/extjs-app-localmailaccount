@@ -1,7 +1,7 @@
 /**
  * conjoon
- * extjs-app-localmailuser
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailuser
+ * extjs-app-localmailaccount
+ * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -28,16 +28,16 @@
  */
 export default {
 
-    name: "extjs-app-localmailuser",
+    name: "extjs-app-localmailaccount",
 
     timeout: 750,
 
 
     loaderPath: {
 
-        "conjoon.localmailuser.overrides.conjoon.cn_mail.app.PackageController": "../overrides/conjoon.cn_mail.app.PackageController.js",
+        "conjoon.localmailaccount.overrides.conjoon.cn_mail.app.PackageController": "../overrides/conjoon.cn_mail.app.PackageController.js",
 
-        "conjoon.localmailuser": "../src",
+        "conjoon.localmailaccount": "../src",
 
         /**
          * Universal

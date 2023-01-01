@@ -28,7 +28,7 @@ StartTest(t => {
     let conf;
 
     const PARENT_CLASS = "coon.core.data.request.Configurator";
-    const CLASS_NAME = "conjoon.localmailuser.data.request.Configurator";
+    const CLASS_NAME = "conjoon.localmailaccount.data.request.Configurator";
 
     const create = () => Ext.create(CLASS_NAME);
 

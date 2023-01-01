@@ -1,6 +1,6 @@
-# @conjoon/extjs-app-localmailuser Documentation
+# @conjoon/extjs-app-localmailaccount Documentation
 
-**extjs-app-localmailuser** is a **coon.js** package and is tagged as such in the
+**extjs-app-localmailaccount** is a **coon.js** package and is tagged as such in the
 `package.json`:
 
 ```json
@@ -10,17 +10,17 @@
             "autoLoad": {
                 "registerController":  true
             },
-            "config": "${package.resourcePath}/extjs-app-localmailuser.conf.json"
+            "config": "${package.resourcePath}/extjs-app-localmailaccount.conf.json"
         }
     }
 }
 ```
 
 By default, this package's configuration can be found in this package's `resources` folder
-in a file named `extjs-app-localmailuser.conf.json`.
+in a file named `extjs-app-localmailaccount.conf.json`.
 
 
-## What goes into a `extjs-app-localmailuser` configuration?
+## What goes into a `extjs-app-localmailaccount` configuration?
 
 The package utilizes the Local Storage API for saving email account information locally. The following configuration
 is required for this package:

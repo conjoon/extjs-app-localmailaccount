@@ -1,4 +1,4 @@
-# @conjoon/extjs-app-localmailuser - Tests - Read Me
+# @conjoon/extjs-app-localmailaccount - Tests - Read Me
 
 This package uses [Siesta](http://bryntum.com) for Unit-/UI-testing.
 

@@ -28,7 +28,7 @@ StartTest(t => {
 
     let sim;
 
-    const CLASS_NAME = "conjoon.localmailuser.data.MailAccountToLocalStorageSim";
+    const CLASS_NAME = "conjoon.localmailaccount.data.MailAccountToLocalStorageSim";
     const PARENT_CLASS = "Ext.ux.ajax.JsonSimlet";
 
     const create = () => Ext.create(CLASS_NAME);
@@ -49,7 +49,7 @@ StartTest(t => {
         t.isInstanceOf(sim, PARENT_CLASS);
 
         t.expect(l8.unchain(CLASS_NAME, window).required).toEqual({
-            mailAccountRepository: "conjoon.localmailuser.data.MailAccountRepository"
+            mailAccountRepository: "conjoon.localmailaccount.data.MailAccountRepository"
         });
     });
 

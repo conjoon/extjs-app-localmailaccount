@@ -24,17 +24,17 @@
  */
 
 
-Ext.define("conjoon.localmailuser.data.MailAccountToLocalStorageSim", {
+Ext.define("conjoon.localmailaccount.data.MailAccountToLocalStorageSim", {
 
     extend: "Ext.ux.ajax.JsonSimlet",
 
     requires: [
-        "conjoon.localmailuser.data.MailAccountRepository"
+        "conjoon.localmailaccount.data.MailAccountRepository"
     ],
 
     statics: {
         required: {
-            mailAccountRepository: "conjoon.localmailuser.data.MailAccountRepository"
+            mailAccountRepository: "conjoon.localmailaccount.data.MailAccountRepository"
         }
     },
 

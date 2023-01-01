@@ -24,7 +24,7 @@
  */
 
 
-Ext.define("conjoon.localmailuser.data.MailAccountRepository", {
+Ext.define("conjoon.localmailaccount.data.MailAccountRepository", {
 
     requires: [
         // @define "l8"
