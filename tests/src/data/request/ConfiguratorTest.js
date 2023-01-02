@@ -1,7 +1,7 @@
 /**
  * conjoon
  * extjs-app-localmailaccount
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
+ * Copyright (C) 2022-2023 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -225,7 +225,7 @@ StartTest(t => {
 
         const inboxResultHeaders = {
             Authorization: "Basic " + conf.encode(mailAccount.getInboxAuth().join(":")),
-            "X-CNMAIL-DATA": conf.encode(mailAccount.getInboxInfo())
+            "X-CNMAIL-DATA": conf.encode(Object.assign(mailAccount.getInboxInfo(), mailAccount.getGeneralInfo()))
         };
 
         let request = conf.configure(makeRequest(inboxRequest));
@@ -251,7 +251,11 @@ StartTest(t => {
         const outboxResultHeaders = {
             Authorization: "Basic " + conf.encode(mailAccount.getInboxAuth().join(":")),
             "X-CNMAIL-DATA": conf.encode(
-                Object.assign(mailAccount.getOutboxInfo(true), mailAccount.getInboxInfo())
+                Object.assign(
+                    mailAccount.getOutboxInfo(true),
+                    mailAccount.getInboxInfo(),
+                    mailAccount.getGeneralInfo()
+                )
             )
         };
 
