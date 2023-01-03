@@ -67,11 +67,10 @@ Ext.define("conjoon.localmailaccount.data.request.Configurator", {
             isInboxRequest = me.isInboxRequest(request),
             authStr = mailAccount.getInboxAuth(),
             serverInfo = isInboxRequest
-                ? Object.assign(mailAccount.getInboxInfo(), mailAccount.getGeneralInfo())
+                ? mailAccount.getInboxInfo()
                 : Object.assign(
                     mailAccount.getOutboxInfo(true),
-                    mailAccount.getInboxInfo(),
-                    mailAccount.getGeneralInfo()
+                    mailAccount.getInboxInfo()
                 ),
             headers = (isDataRequest ? request.getHeaders() : request.headers) || {},
             newHeaders = Object.assign(headers, {

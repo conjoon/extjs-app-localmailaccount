@@ -225,7 +225,7 @@ StartTest(t => {
 
         const inboxResultHeaders = {
             Authorization: "Basic " + conf.encode(mailAccount.getInboxAuth().join(":")),
-            "X-CNMAIL-DATA": conf.encode(Object.assign(mailAccount.getInboxInfo(), mailAccount.getGeneralInfo()))
+            "X-CNMAIL-DATA": conf.encode(mailAccount.getInboxInfo())
         };
 
         let request = conf.configure(makeRequest(inboxRequest));
@@ -253,8 +253,7 @@ StartTest(t => {
             "X-CNMAIL-DATA": conf.encode(
                 Object.assign(
                     mailAccount.getOutboxInfo(true),
-                    mailAccount.getInboxInfo(),
-                    mailAccount.getGeneralInfo()
+                    mailAccount.getInboxInfo()
                 )
             )
         };
