@@ -1,7 +1,7 @@
 /**
  * conjoon
  * extjs-app-localmailaccount
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
+ * Copyright (C) 2022-2023 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -67,8 +67,11 @@ Ext.define("conjoon.localmailaccount.data.request.Configurator", {
             isInboxRequest = me.isInboxRequest(request),
             authStr = mailAccount.getInboxAuth(),
             serverInfo = isInboxRequest
-                         ? mailAccount.getInboxInfo()
-                         : Object.assign(mailAccount.getOutboxInfo(true), mailAccount.getInboxInfo()),
+                ? mailAccount.getInboxInfo()
+                : Object.assign(
+                    mailAccount.getOutboxInfo(true),
+                    mailAccount.getInboxInfo()
+                ),
             headers = (isDataRequest ? request.getHeaders() : request.headers) || {},
             newHeaders = Object.assign(headers, {
                 Authorization: "Basic " + me.encode(authStr.join(":")),
