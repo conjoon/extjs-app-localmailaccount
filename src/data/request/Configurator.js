@@ -63,14 +63,20 @@ Ext.define("conjoon.localmailaccount.data.request.Configurator", {
             throw new Error(`no MailAccount found for url ${url}`);
         }
 
+        const addressInfo = {
+            from: mailAccount.get("from"),
+            replyTo: mailAccount.get("replyTo")
+        };
+
         const
             isInboxRequest = me.isInboxRequest(request),
             authStr = mailAccount.getInboxAuth(),
             serverInfo = isInboxRequest
-                ? mailAccount.getInboxInfo()
+                ? Object.assign(mailAccount.getInboxInfo(), addressInfo)
                 : Object.assign(
                     mailAccount.getOutboxInfo(true),
-                    mailAccount.getInboxInfo()
+                    mailAccount.getInboxInfo(),
+                    addressInfo
                 ),
             headers = (isDataRequest ? request.getHeaders() : request.headers) || {},
             newHeaders = Object.assign(headers, {
