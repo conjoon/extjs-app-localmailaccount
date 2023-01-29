@@ -28,8 +28,21 @@ is required for this package:
 
 ```json
 {
-  "title": "Local Email User",
-  "interceptUri": "\\/MailAccounts\\/?[^\\/]*$"
+  "title": "Local Email Accounts",
+  "interceptUri": "\\/MailAccounts\\/?[^\\/]*$",
+  "ioc": {
+    "bindings": {
+      "conjoon.dev.cn_mailsim": {
+        "conjoon.dev.cn_mailsim.data.SimletAdapter": "conjoon.localmailaccount.dev.BasicAuthSimletAdapter"
+      },
+      "conjoon.cn_mail": {
+        "coon.core.data.request.Configurator": {
+          "xclass": "conjoon.localmailaccount.data.request.Configurator",
+          "singleton": true
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -39,3 +52,5 @@ observers with this title whenever view of the package gets activated and gains 
 
 - `interceptUri` - The URI the package should intercept when reading/writing MailAccounts so commands are redirected to
 this package's LocalStorage-API
+
+- `ioc` - Bindings for the Inversion of Control-Container used with **extjs-app-localmailaccount**. 

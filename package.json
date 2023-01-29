@@ -1,16 +1,16 @@
 {
-    "name": "@conjoon/extjs-app-localmailuser",
+    "name": "@conjoon/extjs-app-localmailaccount",
     "sencha": {
-        "name": "extjs-app-localmailuser",
+        "name": "extjs-app-localmailaccount",
         "coon-js": {
             "package": {
                 "autoLoad": {
                     "registerController": true
                 },
-                "config": "${package.resourcePath}/extjs-app-localmailuser.conf.json"
+                "config": "${package.resourcePath}/extjs-app-localmailaccount.conf.json"
             }
         },
-        "namespace": "conjoon.localmailuser",
+        "namespace": "conjoon.localmailaccount",
         "type": "code",
         "toolkit": "classic",
         "creator": "Thorsten Suckow-Homberg <thorsten@suckow-homberg.de>",
@@ -68,7 +68,10 @@
         "example": null,
         "framework": "ext",
         "requires": [
-            "extjs-app-webmail"
+            "ux",
+            "extjs-lib-comp",
+            "extjs-app-webmail",
+            "extjs-dev-webmailsim"
         ]
     },
     "description": "Sencha Ext JS npm package for using local storage for maintaining email accounts.",
@@ -80,7 +83,7 @@
     },
     "scripts": {
         "bundle": "npx bundleme",
-        "build": "npx @sencha/cmd package build && npm run bundle",
+        "build": "npx delorean -p && npx @sencha/cmd package build && npm run bundle && npx delorean -r",
         "build:dev": "npx node-git-hooks",
         "postversion": "git push && git push --tags",
         "test": "npm run test:siesta",
@@ -89,13 +92,16 @@
         "release:patch": "npm run preversion && standard-version --release-as patch && npm run postversion",
         "release:minor": "npm run preversion && standard-version --release-as minor && npm run postversion",
         "release:major": "npm run preversion && standard-version --release-as major && npm run postversion",
-        "test:siesta": "npx ws --port 8069 --static.index tests.redirect.html --open"
+        "test:siesta": "npx ws --port 8070 --static.index tests.redirect.html --open"
     },
     "dependencies": {
-        "@conjoon/extjs-app-webmail": "^0.3",
+        "@conjoon/extjs-app-webmail": "^1.0.1",
+        "@conjoon/extjs-dev-webmailsim": "^1.0.1",
         "@conjoon/extjs-theme-material": "^0.3.1",
-        "@coon-js/extjs-lib-core": "^1.0.1",
-        "@l8js/l8": "^0.8.0"
+        "@coon-js/extjs-app-user": "^0.1.7",
+        "@coon-js/extjs-lib-comp": "^0.3.0",
+        "@coon-js/extjs-lib-core": "^1.0.5",
+        "@l8js/l8": "^0.10.1"
     },
     "devDependencies": {
         "@commitlint/cli": "^13.2.0",
@@ -122,7 +128,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/conjoon/extjs-app-localmailuser.git"
+        "url": "git+https://github.com/conjoon/extjs-app-localmailaccount.git"
     },
     "keywords": [
         "webmail",
@@ -143,7 +149,7 @@
     "author": "Thorsten Suckow-Homberg <thorsten@suckow-homberg.de>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/conjoon/extjs-app-localmailuser/issues"
+        "url": "https://github.com/conjoon/extjs-app-localmailaccount/issues"
     },
-    "homepage": "https://github.com/conjoon/extjs-app-localmailuser#readme"
+    "homepage": "https://github.com/conjoon/extjs-app-localmailaccount#readme"
 }
