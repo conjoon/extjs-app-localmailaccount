@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/conjoon/extjs-app-localmailaccount/compare/v1.0.0...v1.0.1) (2023-02-07)
+
+
+### Bug Fixes
+
+* requests are not properly executed when package is used ([b9844c8](https://github.com/conjoon/extjs-app-localmailaccount/commit/b9844c80d65cfceeb9795f487d06c26a802aca50)), closes [conjoon/extjs-app-localmailaccount#10](https://github.com/conjoon/extjs-app-localmailaccount/issues/10)
+
 ## 1.0.0 (2023-01-29)
 
 
