@@ -35,6 +35,10 @@ StartTest(t => {
         return rep.idPrefix + rep.idPostfixTemplate.replace("\\d", ordinal);
     };
 
+    t.afterEach(() => {
+        window.localStorage.clear();
+    });
+
 
     const create = () => Ext.create(CLASS_NAME);
 
@@ -137,6 +141,21 @@ StartTest(t => {
         });
 
         [queryAllSpy].map(spy => spy.remove());
+    });
+
+
+    t.it("conjoon/extjs-app-localmailaccount#9", t => {
+
+        rep = create();
+
+        t.expect(rep.idPostfixTemplate).toBe("-\\d");
+
+        let data = rep.insert({});
+
+        t.expect(data.id).toBe("cn_localmailaccount-1");
+        data = rep.insert({});
+        t.expect(data.id).toBe("cn_localmailaccount-2");
+
     });
 
 
