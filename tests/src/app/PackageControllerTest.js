@@ -1,7 +1,7 @@
 /**
  * conjoon
  * extjs-app-localmailaccount
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
+ * Copyright (C) 2022-2023 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -37,6 +37,7 @@ StartTest(t => {
 
         ctrl = Ext.create("conjoon.localmailaccount.app.PackageController");
 
+
         const interceptUri = "intercepturi";
 
         const
@@ -47,6 +48,9 @@ StartTest(t => {
             simSpy = t.spyOn(Ext.ux.ajax.SimManager, "register").and.callFake(() => {});
 
         ctrl.init(app);
+
+        t.expect(Ext.ux.ajax.SimManager.defaultSimlet).toBe(null);
+
         let arg = simSpy.calls.mostRecent().args[0];
         t.isInstanceOf(arg, "conjoon.localmailaccount.data.MailAccountToLocalStorageSim");
         t.expect(arg.url.toString()).toBe(`/${interceptUri}/im`);

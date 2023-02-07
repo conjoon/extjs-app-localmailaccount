@@ -1,7 +1,7 @@
 /**
  * conjoon
  * extjs-app-localmailaccount
- * Copyright (C) 2022 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
+ * Copyright (C) 2022-2023 Thorsten Suckow-Homberg https://github.com/conjoon/extjs-app-localmailaccount
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -43,6 +43,9 @@ Ext.define("conjoon.localmailaccount.app.PackageController", {
         const
             me = this,
             config = app.getPackageConfig(me);
+
+        // @see conjoon/extjs-app-localmailaccount#10
+        Ext.ux.ajax.SimManager.defaultSimlet = null;
 
         Ext.ux.ajax.SimManager.register(
             Ext.create("conjoon.localmailaccount.data.MailAccountToLocalStorageSim", {
