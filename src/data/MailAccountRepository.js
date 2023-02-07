@@ -97,7 +97,7 @@ Ext.define("conjoon.localmailaccount.data.MailAccountRepository", {
     nextId () {
         const me = this,
             idPrefix = me.idPrefix,
-            idPostfixTemplate = me. idPostfixTemplate,
+            idPostfixTemplate = me.idPostfixTemplate,
             accounts = me.queryAll(),
             ids = accounts.map(account => account.id).filter(accountId => accountId !== undefined);
 
