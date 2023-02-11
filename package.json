@@ -95,7 +95,7 @@
         "test:siesta": "npx ws --port 8070 --static.index tests.redirect.html --open"
     },
     "dependencies": {
-        "@conjoon/extjs-app-webmail": "^1.0.1",
+        "@conjoon/extjs-app-webmail": "^1.0.4",
         "@conjoon/extjs-dev-webmailsim": "^1.0.1",
         "@conjoon/extjs-theme-material": "^0.3.1",
         "@coon-js/extjs-app-user": "^0.1.7",
